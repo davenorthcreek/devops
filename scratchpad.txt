@@ -1,0 +1,54 @@
+sub-domains:
+db.apig.dev.gotlivedata.io (done)
+db.apig.prod.gotlivedata.io (currently prod-api-gen.gotlivedata.io)
+db.apig.alt.gotlivedata.io (currently alt-api-gen.gotlivedata.io)
+db.apib.dev.gotlivedata.io (done)
+db.apib.prod.gotlivedata.io (done)
+db.dwh.dev.gotlivedata.io (done)
+db.dwh.prod.gotlivedata.io (done)
+
+RDS Proxies:
+api-general-green-proxy
+api-general-blue-proxy (currently api-general-proxy)
+
+RDS Instances:
+api-general-green
+api-general-blue (currently api-general) (edited)
+
+
+
+db.apig.dev.gotlivedata.io   -> dev directly
+db.apig.prod.gotlivedata.io  -> general blue or green directly
+db.apig.alt.gotlivedata.io   -> general blue or green directly
+db.apib.dev.gotlivedata.io   -> batch dev directly
+db.apib.prod.gotlivedata.io  -> batch prod directly
+db.dwh.dev.gotlivedata.io    -> dwh dev directly
+db.dwh.prod.gotlivedata.io   -> dwh prod directly
+db.apig.prod.proxy.gotlivedata.io  -> general blue or green proxy
+db.apig.alt.proxy.gotlivedata.io   -> general blue or green proxy
+
+
+
+[ec2-user@ip-172-30-2-127 ansible]$ aws ec2 describe-instances   --filter "Name=instance-state-name,Values=running"   --query "Reservations[*].Instances[*].[PrivateIpAddress, Tags[?Key=='Name'].Value|[0]]"   --output text
+172.31.49.237   Default-Environment
+172.30.2.110    blue-gotlivedata-io
+172.30.2.188    prod-google-worker
+172.31.56.252   prod-gotlivedata-com
+172.30.2.127    prod-oxydata-loader
+172.30.2.79     simple-jump-host
+172.31.23.148   api-activeaudiences-com
+172.34.236.146  staging
+172.34.196.51   staging-gotlivedata-com
+172.34.165.126  staging-oxydata-loader
+172.33.2.184    db-dwh
+172.30.2.156    green-gotlivedata.io
+172.31.62.183   alt-gotlivedata-com
+172.30.2.113    prod-google-worker-1
+172.30.2.138    prod-google-worker-2
+172.30.2.175    prod-google-worker-3
+172.30.3.88     prod-bing-even
+172.30.3.82     prod-bing-odd
+172.30.3.98     prod-bing-alpha
+172.30.3.129    manager-switcher
+172.33.2.20     dwh-dev
+172.33.2.156    Temporary
