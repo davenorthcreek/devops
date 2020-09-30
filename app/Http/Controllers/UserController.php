@@ -72,7 +72,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'is_admin' => $request->is_admin=='on'?1:0,
-            'password' => str_random(12),
+            'password' => Str::random(12),
         ]);
         Log::debug([$user->id, $user->name, $user->email]);
         $fpc = new CreatePasswordController();
