@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'dashboard-blade-view');
+#Route::view('/', 'dashboard-blade-view');
 
-Route::view('dashboard', 'dashboard-blade-view')->name('dashboard');
+Route::view('dashboard', 'dashboard-blade-view')->name('dashboard')->middleware('auth');
 
 Auth::routes();
 
