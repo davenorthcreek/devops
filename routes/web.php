@@ -20,3 +20,11 @@ Route::view('dashboard', 'dashboard-blade-view')->name('dashboard')->middleware(
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('user', 'UserController');
+    Route::post('/user_update/{id}', 'UserController@update');
+    Route::get('/delete_user/{id}', 'UserController@destroy');
+});
