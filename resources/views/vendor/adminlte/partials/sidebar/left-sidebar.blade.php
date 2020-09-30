@@ -18,13 +18,6 @@
                 @if(!config('adminlte.sidebar_nav_accordion'))
                     data-accordion="false"
                 @endif>
-                @if (Auth::user()->is_admin)
-                <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">ADMIN MENU</li>
-                    <li><a href="{{ url('/user')  }}">      <i class='fa fa-users'> </i>Users</a> </li>
-                    <li><a href="{{ url('/log-viewer') }}" target="_blank"><i class='fa fa-bug'> </i>Logs</a> </li>
-                </ul>
-            @endif
                 {{-- Configured sidebar links --}}
                 @each('adminlte::partials.sidebar.menu-item', $adminlte->menu('sidebar'), 'item')
             </ul>

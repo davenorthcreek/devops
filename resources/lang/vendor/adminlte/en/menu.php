@@ -16,4 +16,5 @@ return [
     'important'                     => 'Important',
     'warning'                       => 'Warning',
     'information'                   => 'Information',
+    'admin_settings'                => 'ADMIN SETTINGS'
 ];

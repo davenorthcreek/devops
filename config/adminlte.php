@@ -236,10 +236,21 @@ return [
             'search' => true,
             'topnav' => true,
         ],
+
+        [ 'header' => 'admin_settings',
+            'can'  => 'edit-users'
+        ],
+
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'Users',
+            'url'  => 'user',
+            'icon' => 'fa fa-users',
+            'can'  => 'edit-users'
+        ],
+        [   'text' => 'Logs',
+            'url'  => 'log-viewer',
+            'icon' => 'fa fa-bug',
+            'can'  => 'edit-users'
         ],
         [
             'text'        => 'pages',
@@ -433,5 +444,5 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/#93-livewire
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];
