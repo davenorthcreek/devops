@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\CreatePasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use Auth;
 use Log;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -35,7 +36,7 @@ class UserController extends Controller
         $user = Auth::user();
         Log::debug($user->name." ".$user->email." Admin? ".$user->is_admin);
         if ($user->is_admin) {
-            $data['users'] = \App\User::all();
+            $data['users'] = User::all();
             return view('users')->with($data);
         } else {
             return $this->edit($user->id);
@@ -49,7 +50,7 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        $new_user = new \App\User();
+        $new_user = new User();
         return view('new_user_form', [
             "user" => Auth::user(),
             "new_user" => $new_user,
@@ -78,7 +79,7 @@ class UserController extends Controller
         $ret = $fpc->sendCreateLinkEmail($request);
         //$ret is a forward to /user/create
         Auth::login($logged_in); //reset user back to admin, was using new user
-        $data['users'] = \App\User::all();
+        $data['users'] = User::all();
         return view('users')->with($data);
     }
 
@@ -94,7 +95,7 @@ class UserController extends Controller
         if (Auth::user()->is_admin) { //only find user if current user is admin,
             //otherwise show current user info
             Log::debug("Showing user $id since ".Auth::user()->email." is an admin");
-            $user = \App\User::find($id);
+            $user = User::find($id);
         }
         $data['user'] = $user;
         return view('home')->with($data);
@@ -112,7 +113,7 @@ class UserController extends Controller
         if (Auth::user()->is_admin) { //only find user if current user is admin,
             //otherwise show current user info
             Log::debug("Editing user $id since ".Auth::user()->email." is an admin");
-            $user = \App\User::find($id);
+            $user = User::find($id);
         }
         Log::debug("Editing record of user ".$user->email);
         $data['user'] = $user;
@@ -138,7 +139,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         if ($user->is_admin) {
-            $user = \App\User::find($id);
+            $user = User::find($id);
         } else if ($id != $user->id) {
             return redirect()->back()
             ->withInput($request->only('name'))
@@ -185,14 +186,14 @@ class UserController extends Controller
     {
         if (Auth::user()->is_admin)
         {
-            $user = \App\User::find($id);
+            $user = User::find($id);
             if ($user->is_admin) {
                 return redirect()->back();
             } else {
                 $user->delete();
             }
         }
-        $data['users'] = \App\User::all();
+        $data['users'] = User::all();
         return view('users')->with($data);
     }
 
@@ -372,7 +373,7 @@ class UserController extends Controller
     {
         $credentials = Arr::except($credentials, ['token']);
 
-        $user = \App\User::where('email', $credentials['email'])->first();
+        $user = User::where('email', $credentials['email'])->first();
 
         //if ($user && ! $user instanceof CanResetPasswordContract) {
         //    throw new UnexpectedValueException('User must implement CanResetPassword interface.');

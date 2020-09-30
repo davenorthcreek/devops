@@ -24,7 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('user', 'UserController');
-    Route::post('/user_update/{id}', 'UserController@update');
-    Route::get('/delete_user/{id}', 'UserController@destroy');
+    Route::resource('user', 'App\Http\Controllers\UserController');
+    Route::post('/user_update/{id}', 'App\Http\Controllers\UserController@update');
+    Route::get('/delete_user/{id}', 'App\Http\Controllers\UserController@destroy');
 });
