@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Support\Facades\Password;
 use UnexpectedValueException;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Auth\CreatePasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use Auth;
