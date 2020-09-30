@@ -6,10 +6,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use App\Auth\CanCreatePassword;
+use App\Auth\Contracts\CanCreatePassword as CanCreatePasswordContract;
 
-class User extends Authenticatable
+class User extends Authenticatable implements canCreatePasswordContract
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, CanResetPassword, CanCreatePassword;
 
     /**
      * The attributes that are mass assignable.
