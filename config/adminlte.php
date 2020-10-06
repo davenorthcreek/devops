@@ -231,11 +231,11 @@ return [
     */
 
     'menu' => [
-        [
+        /*[
             'text' => 'search',
             'search' => true,
             'topnav' => true,
-        ],
+        ],*/
 
         [
             'text' => 'View Dashboard',
@@ -254,7 +254,7 @@ return [
         ],
         [   'key'  => 'logs',
             'text' => 'Logs',
-            'url'  => 'log-viewer',
+            'url'  => 'logs',
             'icon' => 'fa fa-bug',
             'can'  => 'edit-users'
         ],

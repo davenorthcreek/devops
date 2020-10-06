@@ -29,3 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index');
     Route::post('/dashboard/edit', 'App\Http\Controllers\DashboardController@update');
 });
+
+Route::group(['middleware' => 'admin'], function () {
+    Route::view('logs', 'logs');
+});
