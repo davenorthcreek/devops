@@ -44,4 +44,9 @@ class User extends Authenticatable implements canCreatePasswordContract
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function dashboard()
+    {
+        return $this->hasOne('App\Models\Dashboard');
+    }
 }

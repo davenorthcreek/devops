@@ -20,6 +20,7 @@
         "livewire/livewire": "^2.2",
         "spatie/laravel-dashboard": "^2.0",
         "spatie/laravel-dashboard-calendar-tile": "^2.0",
+        "spatie/laravel-dashboard-time-weather-tile": "^2.0",
         "spatie/laravel-dashboard-twitter-tile": "^2.0"
     },
     "require-dev": {

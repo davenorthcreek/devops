@@ -22,8 +22,10 @@
         }
     </style>
     <div class="container-fluid">
-        <section class="h_iframe">
-            <iframe src="{{route('dashboard')}}" frameborder="0" allowfullscreen></iframe>
-        </section>
+        @if(Auth::user()->dashboard)
+            <section class="h_iframe">
+                <iframe src='{{url('dashboard-view')}}' frameborder="0" allowfullscreen></iframe>
+            </section>
+        @endif
     </div>
 @stop

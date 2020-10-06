@@ -9,7 +9,7 @@ return [
      * - device: follow the OS preference for determining light or dark mode
      * - auto: use light mode when the sun is up, dark mode when the sun is down
      */
-    'theme' => 'light',
+    'theme' => 'auto',
 
     /*
      * When the dashboard uses the `auto` theme, these coordinates will be used
@@ -32,5 +32,15 @@ return [
      */
     'stylesheets' => [
         'inter' => 'https://rsms.me/inter/inter.css'
+    ],
+
+    'tiles' => [
+        'time_weather' => [
+            'open_weather_map_key' => env('OPEN_WEATHER_MAP_KEY'),
+            'open_weather_map_city' => 'Edmonton',
+            'units' => 'metric', // 'metric' or 'imperial' (metric is default)
+            'buienradar_latitude' => env('BUIENRADAR_LATITUDE'),
+            'buienradar_longitude' => env('BUIENRADAR_LONGITUDE'),
+        ],
     ],
 ];

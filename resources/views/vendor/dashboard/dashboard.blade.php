@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Live Data DevOps Dashboard</title>
+        <title>Dashboard</title>
         <meta name="google" value="notranslate">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,11 +14,6 @@
         <livewire:styles />
     </head>
     <body class="leading-snug">
-        <div class="bg-blue-900 text-center py-4 lg:px-4">
-            <div class="p-2 bg-blue-800 items-center text-blue-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
-                <span class="font-semibold mr-2 text-left flex-auto">Live Data DevOps Dashboard</span>
-            </div>
-        <div>
         <div
             x-data="theme('{{ $theme }}', '{{ $initialMode }}')"
             x-init="init"

@@ -26,7 +26,7 @@ class LastSeen
         $user = Auth::user();
         $user->last_seen = Carbon::now();
         $user->save();
-        Log::debug($user->name." last seen ".$user->last_seen->toRfc850String());
+        //Log::debug($user->name." last seen ".$user->last_seen->toRfc850String());
         return $next($request);
     }
 }

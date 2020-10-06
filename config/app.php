@@ -166,6 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Spatie\Dashboard\DashboardServiceProvider::class,
 
         /*
          * Application Service Providers...

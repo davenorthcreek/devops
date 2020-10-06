@@ -16,5 +16,6 @@ return [
     'important'                     => 'Important',
     'warning'                       => 'Warning',
     'information'                   => 'Information',
-    'admin_settings'                => 'ADMIN SETTINGS'
+    'admin_settings'                => 'ADMIN SETTINGS',
+    'my_dashboard'                  => 'Edit Dashboard',
 ];

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-#Route::view('/', 'dashboard-blade-view');
-
-Route::view('dashboard', 'dashboard-blade-view')->name('dashboard')->middleware('auth');
+Route::view('dashboard-view', 'dashboard-blade-view')->name('dashboard-view')->middleware('auth');
 
 Auth::routes();
 
@@ -27,4 +26,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('user', 'App\Http\Controllers\UserController');
     Route::post('/user_update/{id}', 'App\Http\Controllers\UserController@update');
     Route::get('/delete_user/{id}', 'App\Http\Controllers\UserController@destroy');
+    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index');
+    Route::post('/dashboard/edit', 'App\Http\Controllers\DashboardController@update');
 });
